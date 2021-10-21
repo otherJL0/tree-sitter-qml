@@ -1,0 +1,20 @@
+==================
+Import statements
+==================
+
+import qtquick 2.0
+import qtquick 2.0 as coreitems
+
+---
+
+(document
+  (import_statement
+   (module_import
+   (identifier)
+   (version (number) (number))))
+  (import_statement
+   (qualified_import
+   (module_import
+    (identifier)
+    (version (number) (number)))
+   (identifier))))

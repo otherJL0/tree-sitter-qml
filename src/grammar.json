@@ -1,15 +1,36 @@
 {
   "name": "qml",
   "rules": {
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[A-Za-z]+"
+    "document": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_statement"
+      }
     },
-    "number": {
-      "type": "PATTERN",
-      "value": "\\d+"
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "import_statement"
+        }
+      ]
     },
     "import_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "module_import"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "qualified_import"
+        }
+      ]
+    },
+    "module_import": {
       "type": "SEQ",
       "members": [
         {
@@ -18,57 +39,15 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_module_identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_version_number"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "as"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
-    },
-    "_module_identifier": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
           "name": "identifier"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "."
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "version"
         }
       ]
     },
-    "_version_number": {
+    "version": {
       "type": "SEQ",
       "members": [
         {
@@ -84,6 +63,31 @@
           "name": "number"
         }
       ]
+    },
+    "qualified_import": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "module_import"
+        },
+        {
+          "type": "STRING",
+          "value": "as"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "\\w+"
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+"
     }
   },
   "extras": [

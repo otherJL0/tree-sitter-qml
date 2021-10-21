@@ -2,29 +2,40 @@ module.exports = grammar({
   name: "qml",
 
   rules: {
-    identifier: ($) => /[A-Za-z]+/,
+    document: ($) => repeat($._statement),
 
-    number: ($) => /\d+/,
+    _statement: ($) =>
+      choice(
+        $.import_statement,
+      ),
 
     import_statement: ($) =>
+      choice(
+        $.module_import,
+        $.qualified_import,
+      ),
+
+    module_import: ($) =>
       seq(
         "import",
-        $._module_identifier,
-        $._version_number,
-        optional(seq("as", $.identifier)),
-      ),
-
-    _module_identifier: ($) =>
-      seq(
         $.identifier,
-        optional("."),
+        $.version,
       ),
 
-    _version_number: ($) =>
+    version: ($) =>
       seq(
         $.number,
         ".",
         $.number,
       ),
+    qualified_import: ($) =>
+      seq(
+        $.module_import,
+        "as",
+        $.identifier,
+      ),
+
+    identifier: ($) => /\w+/,
+    number: ($) => /\d+/,
   },
 });
