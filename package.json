@@ -4,9 +4,9 @@
   "description": "Tree-sitter grammar for Qt's markup language",
   "main": "bindings/node",
   "scripts": {
-    "generate": "tree-sitter generate",
+    "build": "tree-sitter generate",
     "parse": "tree-sitter parse",
-    "test": "tree-sitter test",
+    "test": "tree-sitter test"
   },
   "repository": {
     "type": "git",
