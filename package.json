@@ -1,16 +1,20 @@
 {
   "name": "tree-sitter-qml",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Tree-sitter grammar for Qt's markup language",
   "main": "bindings/node",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate": "tree-sitter generate",
+    "parse": "tree-sitter parse",
+    "test": "tree-sitter test",
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/otherJL0/tree-sitter-qml.git"
   },
   "keywords": [
+    "parser",
+    "lexer",
     "tree-sitter",
     "qml",
     "treesitter"
@@ -26,5 +30,13 @@
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.0"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.qml",
+      "file-types": [
+        "qml"
+      ]
+    }
+  ]
 }
