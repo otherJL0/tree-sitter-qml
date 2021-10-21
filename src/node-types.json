@@ -1,11 +1,23 @@
 [
   {
-    "type": "source_file",
+    "type": "identifier",
     "named": true,
     "fields": {}
   },
   {
-    "type": "hello",
+    "type": ".",
     "named": false
+  },
+  {
+    "type": "as",
+    "named": false
+  },
+  {
+    "type": "import",
+    "named": false
+  },
+  {
+    "type": "number",
+    "named": true
   }
 ]
