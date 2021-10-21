@@ -18,8 +18,14 @@ module.exports = grammar({
     module_import: ($) =>
       seq(
         "import",
-        $.identifier,
+        $.module,
         $.version,
+      ),
+
+    module: ($) =>
+      seq(
+        $.identifier,
+        optional(seq(".", $.module)),
       ),
 
     version: ($) =>

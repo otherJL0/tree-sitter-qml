@@ -34,7 +34,7 @@
     }
   },
   {
-    "type": "module_import",
+    "type": "module",
     "named": true,
     "fields": {},
     "children": {
@@ -43,6 +43,25 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "module",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "module_import",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "module",
           "named": true
         },
         {

@@ -2,19 +2,21 @@
 Import statements
 ==================
 
-import qtquick 2.0
-import qtquick 2.0 as coreitems
+import QtQuick.Sample.Quick2 2.0
+import QtQuick 2.0 as CoreItems
 
 ---
 
 (document
   (import_statement
-   (module_import
-   (identifier)
-   (version (number) (number))))
+    (module_import
+      (module (identifier)
+          (module (identifier)
+              (module (identifier))))
+      (version (number) (number))))
   (import_statement
-   (qualified_import
-   (module_import
-    (identifier)
-    (version (number) (number)))
-   (identifier))))
+    (qualified_import
+      (module_import
+        (module (identifier))
+          (version (number) (number)))
+          (identifier))))
