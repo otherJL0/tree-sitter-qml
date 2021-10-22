@@ -27,6 +27,14 @@
         {
           "type": "SYMBOL",
           "name": "qualified_import"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "directory_import"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "js_import"
         }
       ]
     },
@@ -98,8 +106,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "module_import"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "module_import"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "directory_import"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -110,6 +127,48 @@
           "name": "identifier"
         }
       ]
+    },
+    "directory_import": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "import"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "path"
+        }
+      ]
+    },
+    "js_import": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "import"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "file"
+        },
+        {
+          "type": "STRING",
+          "value": "as"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "path": {
+      "type": "PATTERN",
+      "value": "\"([^\"]\\/)*[^\"]+\""
+    },
+    "file": {
+      "type": "PATTERN",
+      "value": "\"([^\"]\\/)*[^\"]+\\.js\""
     },
     "identifier": {
       "type": "PATTERN",

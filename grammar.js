@@ -13,6 +13,8 @@ module.exports = grammar({
       choice(
         $.module_import,
         $.qualified_import,
+        $.directory_import,
+        $.js_import,
       ),
 
     module_import: ($) =>
@@ -34,12 +36,22 @@ module.exports = grammar({
         ".",
         $.number,
       ),
+
     qualified_import: ($) =>
       seq(
-        $.module_import,
+        choice(
+          $.module_import,
+          $.directory_import,
+        ),
         "as",
         $.identifier,
       ),
+
+    directory_import: ($) => seq("import", $.path),
+    js_import: ($) => seq("import", $.file, "as", $.identifier),
+
+    path: ($) => /"([^"]\/)*[^"]+"/,
+    file: ($) => /"([^"]\/)*[^"]+\.js"/,
 
     identifier: ($) => /\w+/,
     number: ($) => /\d+/,

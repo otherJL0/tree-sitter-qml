@@ -1,5 +1,20 @@
 [
   {
+    "type": "directory_import",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -23,11 +38,38 @@
       "required": true,
       "types": [
         {
+          "type": "directory_import",
+          "named": true
+        },
+        {
+          "type": "js_import",
+          "named": true
+        },
+        {
           "type": "module_import",
           "named": true
         },
         {
           "type": "qualified_import",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "js_import",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "file",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -80,6 +122,10 @@
       "required": true,
       "types": [
         {
+          "type": "directory_import",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -114,6 +160,10 @@
     "named": false
   },
   {
+    "type": "file",
+    "named": true
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -123,6 +173,10 @@
   },
   {
     "type": "number",
+    "named": true
+  },
+  {
+    "type": "path",
     "named": true
   }
 ]

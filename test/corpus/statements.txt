@@ -4,19 +4,38 @@ Import statements
 
 import QtQuick.Sample.Quick2 2.0
 import QtQuick 2.0 as CoreItems
+import "../../dirname"
+import "dirname" as DirName
 
 ---
 
 (document
   (import_statement
     (module_import
-      (module (identifier)
+      (module 
+       (identifier)
           (module (identifier)
-              (module (identifier))))
-      (version (number) (number))))
+              (module (identifier))
+          )
+      )
+      (version (number) (number))
+    )
+  )
   (import_statement
     (qualified_import
       (module_import
         (module (identifier))
-          (version (number) (number)))
-          (identifier))))
+        (version (number) (number))
+      ) (identifier)
+    )
+  )
+ (import_statement
+    (directory_import
+      (path) 
+    )
+  )
+ (import_statement
+  (qualified_import 
+    (directory_import
+      (path) 
+    ) (identifier))))
