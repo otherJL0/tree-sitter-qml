@@ -6,7 +6,8 @@
   "scripts": {
     "generate": "tree-sitter generate",
     "parse": "tree-sitter parse",
-    "test": "tree-sitter test"
+    "test": "tree-sitter test",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "nan": "^2.15.0"
   },
   "devDependencies": {
+    "husky": "^7.0.4",
     "tree-sitter-cli": "^0.20.0"
   },
   "tree-sitter": [
